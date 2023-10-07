@@ -2,6 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Checkbox from "@mui/material/Checkbox";
+import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+import Favorite from "@mui/icons-material/Favorite";
 import movieCard from "./movieCard";
 
 export default function Movielist() {
@@ -35,6 +38,15 @@ console.log(movie);
             <div className="card-body">
               <h3>{movies.vote_average}</h3>
               <h5 className="card-title">{movies.title}</h5>
+              <Checkbox
+            sx={{
+              color: "black",
+              "&.Mui-checked": { color: "black" },
+            }}
+            
+            icon={<FavoriteBorder />}
+            checkedIcon={<Favorite />}
+          />
               <p className="card-text">{movies.release_date}</p>
             </div>
           </div>

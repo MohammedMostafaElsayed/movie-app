@@ -1,5 +1,5 @@
 
-export default function pagenotfound() {
+export default function Pagenotfound() {
   return (
     <div>
       <div class="d-flex align-items-center justify-content-center vh-100">
