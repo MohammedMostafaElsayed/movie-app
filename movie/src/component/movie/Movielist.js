@@ -25,8 +25,19 @@ console.log(movie);
         {movie.map((movies) => {
           return (
               
-                <movieCard movieData={movies}/>
-           
+            <div className="card h-100">
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movies.backdrop_path}`}
+              class="card-img-top"
+              alt="..."
+              style={{ height: "250px" }}
+            />
+            <div className="card-body">
+              <h3>{movies.vote_average}</h3>
+              <h5 className="card-title">{movies.title}</h5>
+              <p className="card-text">{movies.release_date}</p>
+            </div>
+          </div>
           );
         })}
       </div>

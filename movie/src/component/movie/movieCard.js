@@ -4,7 +4,7 @@ export default function movieCard({movieData}) {
    
   return (
     <>
-      <div className="card h-100">
+      {/* <div className="card h-100">
         <img
           src={`https://image.tmdb.org/t/p/w500/${movieData.backdrop_path}`}
           class="card-img-top"
@@ -16,7 +16,7 @@ export default function movieCard({movieData}) {
           <h5 className="card-title">{movieData.title}</h5>
           <p className="card-text">{movieData.release_date}</p>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
