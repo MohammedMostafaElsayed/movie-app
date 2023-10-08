@@ -39,7 +39,7 @@ export default function Movielist() {
   };
   const handelsubmet = (e) => {
     e.preventDefault();
-    navigate("/search-page");
+    navigate(`/search-page/${search.searchInput}`);
   };
   return (
     <>
