@@ -5,7 +5,7 @@ import axios from "axios";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-import movieCard from "./movieCard";
+import movieCard from "./MovieCard";
 import { useDispatch } from "react-redux";
 import { addCard } from "../../store/slice/watch";
 
@@ -38,12 +38,12 @@ console.log(movie);
         {movie.map((movies) => {
           return (
               <div>
-            <div className="card h-100" onClick={redirectToDetails}>
+            <div className="card h-100" >
             <img
               src={`https://image.tmdb.org/t/p/w500/${movies.backdrop_path}`}
               class="card-img-top"
               alt="..."
-              style={{ height: "300px" }}
+              style={{ height: "300px" }} onClick={redirectToDetails}
             />
             <div className="card-body">
               <h3>{movies.vote_average}</h3>
