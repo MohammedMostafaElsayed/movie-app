@@ -8,6 +8,8 @@ import Favorite from "@mui/icons-material/Favorite";
 import { useDispatch } from "react-redux";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
+import { deleteCard, addCard } from "../../store/slice/watch";
+
 
 export default function Movielist() {
   const navigate = useNavigate();
@@ -84,6 +86,17 @@ export default function Movielist() {
                       />
                     </Stack>
                     <Checkbox
+                      onClick={(e) => {
+                        if (e.target.checked === true)
+                        {
+                          dispatch(addCard(movies));
+
+                        }else{
+                          dispatch(deleteCard(movies));
+
+
+                        }
+                      }}
                       sx={{
                         color: "yello",
                         "&.Mui-checked": { color: "yellow" },
