@@ -14,7 +14,7 @@ export default function WatchCard({ item }) {
 
   return (
     <div
-      className="col d-flex border border-top-0 rounded-5 shadow bg-body-tertiary m-4"
+      className="col d-flex border border-top-0 rounded-5 shadow bg-body-tertiary m-4 "
       style={{ height: "300px", width: "600px" }}
     >
       <img

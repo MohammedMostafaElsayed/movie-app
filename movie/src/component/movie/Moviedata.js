@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function moviedata() {
+export default function Moviedata() {
   return (
     <div>moviedata</div>
   )
