@@ -30,9 +30,7 @@ export default function Movielist() {
       .catch((err) => console.log(err));
   }, []);
 
-  const redirectToDetails = () => {
-    navigate(`/moviedata-page/:id`);
-  };
+  
 
   const handelSearch = (e) => {
     if (e.target.name === "searchInp") {
@@ -75,7 +73,7 @@ export default function Movielist() {
                     className="card-img-top"
                     alt="..."
                     style={{ height: "300px", borderRadius: "20px 20px 0 0" }}
-                    onClick={redirectToDetails}
+                    onClick={()=>{navigate(`/moviedata-page/${movies.id}`)}}
                   />
                   <div className="card-body">
                     <div style={{ display: "flex" }}>

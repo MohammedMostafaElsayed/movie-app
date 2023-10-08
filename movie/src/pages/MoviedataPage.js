@@ -10,7 +10,7 @@ export default function MoviedataPage() {
   useEffect(() => {
     axios
       .get(`https://api.themoviedb.org/3/movie/${value.id}?api_key=ac35580be554252f7d6877401caadb42`)
-      .then((res) => setcard(res.data.results))
+      .then((res) => setcard(res.data))
       .catch((err) => console.log(err));
   }, []);
   console.log(card);
