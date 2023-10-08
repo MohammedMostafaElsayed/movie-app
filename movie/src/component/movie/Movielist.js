@@ -19,39 +19,49 @@ export default function Movielist() {
       .then((res) => setMovie(res.data.results))
       .catch((err) => console.log(err));
   }, []);
+
+const redirectToDetails = () => {
+  navigate(`/moviedata-page/:id`)
+}
+
 console.log(movie);
   return (
     <>
-      <h1>movie list</h1>
-      <hr></hr>
+    <div className="ps-4 pe-4">
+      <h1 style={{display:"flex"}}>Movie APP</h1>
+      
       <div className="row row-cols-1 row-cols-md-6 g-4">
         {movie.map((movies) => {
           return (
-              
-            <div className="card h-100">
+              <div>
+            <div className="card h-100" onClick={redirectToDetails}>
             <img
               src={`https://image.tmdb.org/t/p/w500/${movies.backdrop_path}`}
               class="card-img-top"
               alt="..."
-              style={{ height: "250px" }}
+              style={{ height: "300px" }}
             />
             <div className="card-body">
               <h3>{movies.vote_average}</h3>
-              <h5 className="card-title">{movies.title}</h5>
+              <div style={{display:"flex"}}>
+              <h5 className="card-title" style={{display:"flex"}}>{movies.title}</h5>
               <Checkbox
             sx={{
               color: "black",
-              "&.Mui-checked": { color: "black" },
+              "&.Mui-checked": { color: "yellow" },
             }}
-            
+            style={{paddingLeft:"25%"}}
             icon={<FavoriteBorder />}
             checkedIcon={<Favorite />}
           />
-              <p className="card-text">{movies.release_date}</p>
+          </div>
+              <p className="card-text" style={{display:"flex"}}>{movies.release_date}</p>
             </div>
+          </div>
           </div>
           );
         })}
+      </div>
       </div>
     </>
   );
