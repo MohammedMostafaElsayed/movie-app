@@ -28,11 +28,14 @@ const redirectToDetails = () => {
   navigate(`/moviedata-page/:id`)
 }
 
-console.log(movie);
+
   return (
     <>
     <div className="ps-4 pe-4">
-      <h1 style={{display:"flex"}}>Movie APP</h1>
+    <form className="d-flex m-5 p-5" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outline-success" type="submit">Search</button>
+      </form>
       
       <div className="row row-cols-1 row-cols-md-6 g-4">
         {movie.map((movies) => {
@@ -41,7 +44,7 @@ console.log(movie);
             <div className="card h-100" onClick={redirectToDetails}>
             <img
               src={`https://image.tmdb.org/t/p/w500/${movies.backdrop_path}`}
-              class="card-img-top"
+              className="card-img-top"
               alt="..."
               style={{ height: "300px" }}
             />
@@ -52,12 +55,11 @@ console.log(movie);
               <Checkbox
               onClick={(e)=>{
                 if (e.target.checked == true){
-                  console.log("hiiiiiiiiii")
                   dispatch(addCard(movies))
                 }
               }}
             sx={{
-              color: "black",
+              color: "yello",
               "&.Mui-checked": { color: "yellow" },
             }}
             style={{paddingLeft:"25%"}}
