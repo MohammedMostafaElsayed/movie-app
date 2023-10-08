@@ -9,8 +9,8 @@ export default function WatchList(){
             <h3>Watch list</h3>
             <div class="row row-cols-2 g-4 m-5">
                 {
-                    items.map((w, i)=>{
-                        return(<WatchCard item={w}/>);
+                    items.map((s, i)=>{
+                        return(<WatchCard item={s}/>);
                         
                     })
                 }

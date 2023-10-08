@@ -5,6 +5,8 @@ import Favorite from "@mui/icons-material/Favorite";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteCard } from "../../store/slice/watch";
+
 
 
 
@@ -32,7 +34,7 @@ export default function WatchCard({ item }) {
             icon={<FavoriteBorder />}
             checkedIcon={<Favorite />}
             onClick={() => {
-              dispatch();
+              dispatch(deleteCard(item));
             }}
           />
         </div>

@@ -11,14 +11,26 @@ const watch = createSlice(
     initialState: value,
     reducers:{
         increaseCounter : (state)=>{
-            state.initial = state.inital + 1;
+            state.initial = state.initial + 1;
         },
         addCard :  (state, action)=>{
-            state.items.push(action.payload);
+            const isfound = state.items.find((item) => item.id === action.payload.id);
+            if (!isfound){
+                state.items.push(action.payload);
+            }
+        },
+        deleteCard : (state , action) => {
+            const index = state.items.findIndex((element)=>{
+                if(element.id === action.payload.id){
+                    return element;
+                }
+            }) ;
+            
+            state.items.splice(index,1);
         }
     }
    }
 
 );
-export const {increaseCounter, addCard} = watch.actions;
+export const {increaseCounter, addCard, deleteCard} = watch.actions;
 export default watch.reducer;

@@ -7,12 +7,15 @@ import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import movieCard from "./MovieCard";
 import { useDispatch } from "react-redux";
-import { addCard } from "../../store/slice/watch";
+import { addCard, deleteCard } from "../../store/slice/watch";
 
 export default function Movielist() {
   const navigate = useNavigate();
   const [movie, setMovie] = useState([]);
   const dispatch = useDispatch();
+  const [search, setsearch] = useState({
+    searchInput : null
+  });
   
 
   useEffect(() => {
@@ -28,13 +31,25 @@ const redirectToDetails = () => {
   navigate(`/moviedata-page/:id`)
 }
 
+const handelSearch = (e)=>{
+  if(e.target.name === "searchInp"){
+    setsearch({...search,searchInput : e.target.value})
+  }
 
+
+  }
+  const handelsubmet = (e)=>{
+    e.preventDefault();
+    navigate('/search-page');
+
+
+}
   return (
     <>
     <div className="ps-4 pe-4">
     <form className="d-flex m-5 p-5" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-outline-success" type="submit">Search</button>
+        <input onChange={handelSearch} name="searchInp" value={search.searchInput} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button  onClick={handelsubmet} className="btn btn-outline-success" type="submit">Search</button>
       </form>
       
       <div className="row row-cols-1 row-cols-md-6 g-4">
@@ -53,14 +68,18 @@ const redirectToDetails = () => {
               <div style={{display:"flex"}}>
               <h5 className="card-title" style={{display:"flex"}}>{movies.title}</h5>
               <Checkbox
-              onClick={(e)=>{
-                if (e.target.checked == true){
-                  dispatch(addCard(movies))
-                }
-              }}
+              
             sx={{
               color: "yello",
               "&.Mui-checked": { color: "yellow" },
+            }}
+            onClick={(e)=>{
+              if (e.target.checked === true){
+                dispatch(addCard(movies));  
+
+              }else{
+                dispatch(deleteCard(movies));
+              }
             }}
             style={{paddingLeft:"25%"}}
             icon={<FavoriteBorder />}
