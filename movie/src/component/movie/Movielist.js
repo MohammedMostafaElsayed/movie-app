@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import { deleteCard, addCard } from "../../store/slice/watch";
+import Pagination from '@mui/material/Pagination';
+
 
 
 export default function Movielist() {
@@ -28,9 +30,7 @@ export default function Movielist() {
       .catch((err) => console.log(err));
   }, []);
 
-  const redirectToDetails = () => {
-    navigate(`/moviedata-page/:id`);
-  };
+  
 
   const handelSearch = (e) => {
     if (e.target.name === "searchInp") {
@@ -73,38 +73,35 @@ export default function Movielist() {
                     className="card-img-top"
                     alt="..."
                     style={{ height: "300px", borderRadius: "20px 20px 0 0" }}
-                    onClick={redirectToDetails}
+                    onClick={()=>{navigate(`/moviedata-page/${movies.id}`)}}
                   />
                   <div className="card-body">
-                    <div style={{display:"flex"}}>
-                    <Stack spacing={1}>
-                      <Rating
-                        name="half-rating-read"
-                        defaultValue={movies.vote_average / 2}
-                        precision={0.1}
-                        readOnly
+                    <div style={{ display: "flex" }}>
+                      <Stack spacing={1}>
+                        <Rating
+                          name="half-rating-read"
+                          defaultValue={movies.vote_average / 2}
+                          precision={0.1}
+                          readOnly
+                        />
+                      </Stack>
+                      <Checkbox
+                        onClick={(e) => {
+                          if (e.target.checked === true) {
+                            dispatch(addCard(movies));
+                          } else {
+                            dispatch(deleteCard(movies));
+                          }
+                        }}
+                        
+                        sx={{
+                          color: "yello",
+                          "&.Mui-checked": { color: "yellow" },
+                        }}
+                        style={{ paddingLeft: "55%", paddingTop: "0" }}
+                        icon={<FavoriteBorder />}
+                        checkedIcon={<Favorite />}
                       />
-                    </Stack>
-                    <Checkbox
-                      onClick={(e) => {
-                        if (e.target.checked === true)
-                        {
-                          dispatch(addCard(movies));
-
-                        }else{
-                          dispatch(deleteCard(movies));
-
-
-                        }
-                      }}
-                      sx={{
-                        color: "yello",
-                        "&.Mui-checked": { color: "yellow" },
-                      }}
-                      style={{ paddingLeft: "55%" , paddingTop:"0"}}
-                      icon={<FavoriteBorder />}
-                      checkedIcon={<Favorite />}
-                    />
                     </div>
                     <div style={{ display: "flex" }}>
                       <h5 className="card-title" style={{ display: "flex" }}>
@@ -115,12 +112,24 @@ export default function Movielist() {
                       {movies.release_date}
                     </p>
                   </div>
+                  
                 </div>
+                
               </div>
+              
             );
           })}
         </div>
       </div>
+  
+
+
+   <div className="pb-5" style={{alignItems: "center", display: "flex", justifyContent: "center", position: "absolute", textAlign: "center", left: "50%", transform: "translate(-50%, -50%)" }}>
+    <Stack spacing={2}>
+      <Pagination count={10} shape="rounded" />
+    </Stack>
+    </div>
+      
     </>
   );
 }
