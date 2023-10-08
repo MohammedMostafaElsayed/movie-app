@@ -6,10 +6,14 @@ import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import movieCard from "./movieCard";
+import { useDispatch } from "react-redux";
+import { addCard } from "../../store/slice/watch";
 
 export default function Movielist() {
   const navigate = useNavigate();
   const [movie, setMovie] = useState([]);
+  const dispatch = useDispatch();
+  
 
   useEffect(() => {
     axios
@@ -39,6 +43,12 @@ console.log(movie);
               <h3>{movies.vote_average}</h3>
               <h5 className="card-title">{movies.title}</h5>
               <Checkbox
+              onClick={(e)=>{
+                if (e.target.checked == true){
+                  console.log("hiiiiiiiiii")
+                  dispatch(addCard(movies))
+                }
+              }}
             sx={{
               color: "black",
               "&.Mui-checked": { color: "black" },

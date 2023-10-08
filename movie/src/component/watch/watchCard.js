@@ -5,10 +5,11 @@ import Favorite from "@mui/icons-material/Favorite";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
-import { addCard } from "../../store/slice/watch";
+
+
 
 export default function WatchCard({ item }) {
-  const watch = useSelector((state) => state.watch.initial);
+  
   const dispatch = useDispatch();
 
   return (
@@ -40,7 +41,7 @@ export default function WatchCard({ item }) {
           <Stack spacing={1}>
             <Rating
               name="half-rating-read"
-              defaultValue={item.vote_average}
+              defaultValue={item.vote_average / 2}
               precision={0.1}
               readOnly
             />
