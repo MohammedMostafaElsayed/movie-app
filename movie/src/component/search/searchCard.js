@@ -7,22 +7,23 @@ import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCard, addCard } from "../../store/slice/watch";
 
-export default function SearchCard({item}){
+export default function SearchCard({single}){
     const dispatch = useDispatch();
     return(
+        
         <div
-        className="col border border-top-0 rounded-5 shadow bg-body-tertiary m-4 "
-        style={{ height: "300px", width: "600px" }}
+        className="col d-flex border border-top-0 rounded-5 shadow bg-body-tertiary m-4"
+        style={{ height: "300px", width: "600px"}}
       >
         <img
           className="card-img-top rounded-5 card m-3 "
-          src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/w500/${single?.backdrop_path}`}
           alt="..."
         />
   
-        <div className="card-body m-3">
+        <div className="card-body m-3 p-2">
           <div className="d-flex justify-content-between">
-            <h2 className="card-title">{item.title}</h2>
+            <h2 className="card-title" style={{fontSize:"30px"}}>{single?.title}</h2>
             <Checkbox
               defaultChecked
               sx={{ color: "#FFC107", "&.Mui-checked": { color: "#FFC107" } }}
@@ -30,27 +31,26 @@ export default function SearchCard({item}){
               checkedIcon={<Favorite />}
               onClick={(e)=>{
                 if (e.target.checked === true){
-                  dispatch(addCard(item));  
+                  dispatch(addCard(single));  
   
                 }else{
-                  dispatch(deleteCard(item));
+                  dispatch(deleteCard(single));
                 }
               }}
             />
           </div>
-          <p className="text-start">{item.release_date}</p>
+          <p className="text-start pt-4">{single?.release_date}</p>
           <div className="d-flex">
             <Stack spacing={1}>
               <Rating
                 name="half-rating-read"
-                defaultValue={item.vote_average / 2}
+                defaultValue={single?.vote_average / 2}
                 precision={0.1}
                 readOnly
               />
             </Stack>
-            <h6 className="ms-3 p-1">{item.vote_count}</h6>
+            <h6 className="ms-3 p-1">{single?.vote_count}</h6>
           </div>
-          <p className="text-start">{item.overview}</p>
         </div>
       </div>
         

@@ -9,7 +9,7 @@ export default function Routers(){
     return(
     
         <Routes>
-            <Route path="/search-page" element={<SearchPage/>} />
+            <Route path="/search-page/:name" element={<SearchPage/>} />
             <Route path="/watch-page" element={<WatchList/>}/>
             <Route path="/moviedata-page/:id" element={<MoviedataPage/>}/>
             <Route path="/" element={<MoviePage/>}/>
