@@ -17,7 +17,7 @@ export default function Moviedata({item}) {
       <h1 style={{paddingTop:"60px"}}>movie detail</h1>
       <div
       className="col d-flex border border-top-0 rounded-5 shadow bg-body-tertiary m-4 "
-      style={{ height: "300px", width: "600px" }}
+      style={{ height: "500px", width: "900px" }}
     >
       <img
         className="card-img-top rounded-5 card m-3 "

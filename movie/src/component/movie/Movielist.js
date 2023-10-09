@@ -76,7 +76,7 @@ export default function Movielist() {
                     onClick={()=>{navigate(`/moviedata-page/${movies.id}`)}}
                   />
                   <div className="card-body">
-                    <div style={{ display: "flex" }}>
+                    <div className="justify-content-between" style={{ display: "flex" }}>
                       <Stack spacing={1}>
                         <Rating
                           name="half-rating-read"
@@ -98,7 +98,7 @@ export default function Movielist() {
                           color: "yello",
                           "&.Mui-checked": { color: "yellow" },
                         }}
-                        style={{ paddingLeft: "55%", paddingTop: "0" }}
+                         className="pt-0 ps-5"
                         icon={<FavoriteBorder />}
                         checkedIcon={<Favorite />}
                       />
