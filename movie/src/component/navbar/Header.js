@@ -1,5 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 
@@ -8,11 +12,11 @@ import { useSelector } from "react-redux";
 export default function Header() {
   const counter = useSelector(state => state.watch.initial)
   return (
-    <nav className="navbar navbar-expand-lg bg-warning fixed-top">
-  <div className="container-fluid  display-flex">
-    <div className="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-      {/* <ul className="navbar-nav justify-content-between d-flex justfy-content-space around"> */}
-      
+    <Navbar expand="lg" className="bg-warning fixed-top" >
+      <Container >
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
           <NavLink
             to="/"
             className="nav-link"
@@ -25,10 +29,10 @@ export default function Header() {
           >
             App Movie
           </NavLink>
-        
+
           <NavLink
             to="/watch-page"
-            className="nav-link text-end positio-relative display-flex ps-5 flex-reverse"
+            className="nav-link text-end positioRelative d-flex ps-5 flexReverse"
             style={({ isActive, isPending }) => {
               return {
                 fontWeight: isActive ? "bold" : "",
@@ -38,9 +42,13 @@ export default function Header() {
 
           >
             Watch List
-          </NavLink>
-    </div>
-  </div>
-</nav>
+          </NavLink>         
+        
+        </Nav>
+        </Navbar.Collapse>
+        </Container>
+    </Navbar>
+  
+
   );
 }

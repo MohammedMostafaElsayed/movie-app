@@ -13,21 +13,22 @@ export default function Moviedata({item}) {
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <h1 style={{paddingTop:"60px"}}>movie detail</h1>
+    <div >
+      <h1 style={{paddingTop:"60px"}}>{item.title}</h1>
+<div className='pe-5' style={{alignItems:"center", justifyContent:"center"}}>
       <div
       className="col d-flex border border-top-0 rounded-5 shadow bg-body-tertiary m-4 "
-      style={{ height: "500px", width: "900px" }}
+      style={{ height: "500px", width: "100%" }}
     >
       <img
-        className="card-img-top rounded-5 card m-3 "
+        className="card-img-top rounded-5 card m-4 "
         src={`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`}
         alt="..."
       />
 
       <div className="card-body m-3">
         <div className="d-flex justify-content-between">
-          <h2 className="card-title">{item.title}</h2>
+          <h1 className="card-title" style={{fontSize:"40px"}}>{item.title}</h1>
           <Checkbox
             defaultChecked
             sx={{ color: "#FFC107", "&.Mui-checked": { color: "#FFC107" } }}
@@ -38,7 +39,7 @@ export default function Moviedata({item}) {
             }}
           />
         </div>
-        <p className="text-start">{item.release_date}</p>
+        <p className="text-start pt-4">{item.release_date}</p>
         <div className="d-flex">
           <Stack spacing={1}>
             <Rating
@@ -50,10 +51,10 @@ export default function Moviedata({item}) {
           </Stack>
           <h6 className="ms-3 p-1">{item.vote_count}</h6>
         </div>
-        <p className="text-start">{item.overview}</p>
+        <p style={{fontSize:"24px"}} className="text-start">{item.overview}</p>
       </div>
     </div>
-
+    </div>
     </div>
   )
 }

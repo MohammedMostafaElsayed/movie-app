@@ -43,8 +43,9 @@ export default function Movielist() {
   };
   return (
     <>
-      <div className="ps-4 pe-4">
-        <form className="d-flex m-5 p-5" role="search">
+    
+      <div className="ps-4 pe-4 pt-5 ">
+        <form className="d-flex m-1 p-4 mt-5 bg-body-secondary" role="search">
           <input
             onChange={handelSearch}
             name="searchInp"
@@ -63,11 +64,11 @@ export default function Movielist() {
           </button>
         </form>
 
-        <div className="row row-cols-1 row-cols-md-4 g-5 p-5 m-5">
+        <div className="row row-cols-1 row-cols-md-2 g-5 p-5 m-5">
           {movie.map((movies) => {
             return (
               <div>
-                <div className="card h-100" style={{ borderRadius: "20px" }}>
+                <div className="card h-100 bg-warning" style={{ borderRadius: "20px"}}>
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${movies.backdrop_path}`}
                     className="card-img-top"
@@ -77,13 +78,20 @@ export default function Movielist() {
                   />
                   <div className="card-body">
                     <div className="justify-content-between" style={{ display: "flex" }}>
-                      <Stack spacing={1}>
-                        <Rating
+                      <Stack spacing={1} > 
+                        <Rating className="text-black"
                           name="half-rating-read"
                           defaultValue={movies.vote_average / 2}
                           precision={0.1}
                           readOnly
+                          sx={{
+                            fontSize: "2rem", 
+                            "@media (max-width: 768px)": {
+                              fontSize: "1.5rem", 
+                            },
+                          }}
                         />
+                        
                       </Stack>
                       <Checkbox
                         onClick={(e) => {
@@ -95,10 +103,15 @@ export default function Movielist() {
                         }}
                         
                         sx={{
-                          color: "yello",
-                          "&.Mui-checked": { color: "yellow" },
+                          color: "black",
+                          "&.Mui-checked": { color: "black" },
+                          fontSize: "2rem",  
+                          "@media (max-width: 768px)": {
+                            fontSize: "1.5rem",
+                          },
                         }}
-                         className="pt-0 ps-5"
+                        
+                         
                         icon={<FavoriteBorder />}
                         checkedIcon={<Favorite />}
                       />
